@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eslabón Armado - Inicio</title>
+  <link rel="stylesheet" href="estilos/styles.css"/>
+  <link rel="icon" type="image/png" href="imagenes/favicon.png">
+  <style>
+    .hero.hero-cover {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1rem;
+      background-image: var(--hero-img);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: none;
+    }
+    .hero.hero-cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.35) 0%,
+        rgba(2, 6, 23, 0.55) 50%,
+        rgba(2, 6, 23, 0.65) 100%
+      );
+    }
+    .hero.hero-cover .container {
+      position: relative;
+      z-index: 1;
+    }
+    .hero.hero-cover .hero-image { display: none; }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-brand">
+            <img src="imagenes/logo-eslabon.png" alt="Eslabón Armado" class="logo-img">
+          </div>
+
+          <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+          </button>
+
+          <div id="primary-menu" class="nav-links">
+            <a href="index.html" class="nav-link active">Inicio</a>
+            <a href="#" class="nav-link disabled-link">Historia</a>
+            <a href="integrantes.html" class="nav-link">Integrantes</a>
+            <a href="discografia.html" class="nav-link">Discografía</a>
+            <a href="#" class="nav-link disabled-link">Galería</a>
+            <a href="#" class="nav-link disabled-link">Redes Sociales</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero hero-cover" style="--hero-img: url('imagenes/grupo.jpg');">
+      <div class="container text-center">
+        <h2 class="hero-title">Eslabón Armado</h2>
+        <p class="hero-description">
+          Bienvenidos al mundo de Eslabón Armado, el grupo que ha revolucionado la música regional mexicana con su
+          pasión, talento y dedicación. Descubre su trayectoria, música y la historia detrás de cada canción.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary">Escuchar Música</button>
+          <button class="btn btn-outline">Ver Videos</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h5 class="footer-title">Eslabón Armado</h5>
+            <p class="footer-text">
+              Grupo de música regional mexicana comprometido con llevar nuestra pasión y cultura a todo el mundo.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h5 class="footer-title">Enlaces Rápidos</h5>
+            <ul class="footer-links">
+              <li><a href="#">Historia</a></li>
+              <li><a href="integrantes.html">Integrantes</a></li>
+              <li><a href="discografia.html">Discografía</a></li>
+              <li><a href="#">Galería</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h5 class="footer-title">Contacto</h5>
+            <p class="footer-text">
+              Para contrataciones y colaboraciones, contáctanos a través de nuestras redes sociales oficiales.
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Eslabón Armado. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      menu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (menu.classList.contains('open')) {
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
